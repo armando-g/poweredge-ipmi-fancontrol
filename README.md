@@ -11,16 +11,16 @@ This script uses the `psutil` and `subprocess` library to monitor the CPU temper
 2. Make sure that the `ipmitool` is installed and functioning with the command `ipmitool raw 0x30 0x30 0x02 0xff <0x01-0x64>`
 3. Install the `psutil` library by running `pip3 install psutil`
 4. Edit the script and update the variables to match your desired values.
-5. You can run the script by executing `python3 ipmi-fancontrol.py`
+5. You can run the script by executing `python3 poweredge-ipmi-fancontrol.py`
 ## Running as a systemd service
 You can run the script as a systemd service by following these steps:
 
-1. Create a new service file in the `/etc/systemd/system` directory. You can name it `ipmi-fancontrol.service` for example.
+1. Create a new service file in the `/etc/systemd/system` directory. You can name it `poweredge-ipmi-fancontrol.service` for example.
 2. Open the file with a text editor and add the following content:
 
 ```
 [Unit]
-Description=IPMI Fan Control Service
+Description=PowerEdge IPMI Fan Control Service
 
 [Service]
 ExecStart=/usr/bin/python3 /path/to/your/script.py
@@ -36,20 +36,20 @@ WantedBy=multi-user.target`
 
 ```
 sudo systemctl daemon-reload
-sudo systemctl enable ipmi-fancontrol.service
+sudo systemctl enable poweredge-ipmi-fancontrol.service
 ```
 6. You can start the service by running the following command:
 ```
-sudo systemctl start ipmi-fancontrol.service
+sudo systemctl start poweredge-ipmi-fancontrol.service
 ```
 7. To check the status of the service, use the following command:
 ```
-sudo systemctl status ipmi-fancontrol.service
+sudo systemctl status poweredge-ipmi-fancontrol.service
 ```
 8. To stop the service, use the following command:
 ```
-sudo systemctl stop ipmi-fancontrol.service
+sudo systemctl stop poweredge-ipmi-fancontrol.service
 ```
-You can also use `sudo systemctl restart ipmi-fancontrol.service` to restart the service and s`udo systemctl disable ipmi-fancontrol.service` to disable it.
+You can also use `sudo systemctl restart poweredge-ipmi-fancontrol.service` to restart the service and s`udo systemctl disable ipmi-fancontrol.service` to disable it.
 
 Please make sure that the user running the service has the permissions to execute the command and read the temperature data.
