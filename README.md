@@ -1,13 +1,14 @@
-# IPMI Fan Control
+# PowerEdge IPMI Fan Control
 
-This script uses the `psutil` and `os` library to monitor the CPU temperature and control the fan speed using the IPMI interface.
+This script uses the `psutil` and `subprocess` library to monitor the CPU temperature and control the fan speed using the IPMI interface. This script runs a loop that checks the average CPU temperature across all cores & CPUs. It will then use a linear expression to calculate the fan speed using minimum and maximum speeds and temperatures. You may also configure a minimum change required for the fan speeds to be updated to limit fan speed fluctuations or in general spamming of the interface.
+
 ## Prerequisites
 * Python 3
 * `psutil` library
-* `ipmitool` installed on your system
+* `ipmitool` installed on your system and functioning with the command `ipmitool raw 0x30 0x30 0x02 0xff <0x01-0x64>`
 ## Installation
 1. Clone or download the script to your system.
-2. Make sure that the `ipmitool` is installed and configured on your system.
+2. Make sure that the `ipmitool` is installed and functioning with the command `ipmitool raw 0x30 0x30 0x02 0xff <0x01-0x64>`
 3. Install the `psutil` library by running `pip3 install psutil`
 4. Edit the script and update the variables to match your desired values.
 5. You can run the script by executing `python3 ipmi-fancontrol.py`
