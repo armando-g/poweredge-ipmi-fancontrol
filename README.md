@@ -2,6 +2,8 @@
 
 This script uses the `psutil` and `subprocess` libraries to continuously monitor the CPU temperature and adjust the fan speed through the IPMI interface.  The script executes a continuous loop that samples the average temperature across all CPU cores and calculates the corresponding fan speed via a linear equation, utilizing pre-configured minimum and maximum temperature and fan speed bounds. Additionally, the script incorporates a hysteresis mechanism, which sets a minimum temperature delta threshold before triggering an update in fan speed, thus mitigating excessive fan speed fluctuations.
 
+This script has been successfully tested on the Dell R210ii, R720, and R7910.
+
 ## Prerequisites
 * Python 3
 * `psutil` library
