@@ -1,6 +1,6 @@
 # PowerEdge IPMI Fan Control
 
-This script uses the `psutil` and `subprocess` libraries to continuously monitor the CPU temperature and adjust the fan speed through the IPMI interface. The script runs a loop that checks the average temperature of all CPU cores and calculates the appropriate fan speed using a linear equation based on pre-defined minimum and maximum temperature and fan speed values. The script also includes a way to set a minimum change in temperature before the fan speed is updated in order to limit unnecessary fan fluctuations. By default, a change of at least 5 degrees is required.
+This script uses the `psutil` and `subprocess` libraries to continuously monitor the CPU temperature and adjust the fan speed through the IPMI interface.  The script executes a continuous loop that samples the average temperature across all CPU cores and calculates the corresponding fan speed via a linear equation, utilizing pre-configured minimum and maximum temperature and fan speed bounds. Additionally, the script incorporates a hysteresis mechanism, which sets a minimum temperature delta threshold before triggering an update in fan speed, thus mitigating excessive fan speed fluctuations.
 
 ## Prerequisites
 * Python 3
