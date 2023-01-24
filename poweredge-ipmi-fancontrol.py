@@ -40,6 +40,11 @@ def calculate_fan_speed(temp):
         fan_speed = min_speed + (temp_percentage * speed_range)
         return fan_speed
 
+# Enable manual fan control and disable third party PCIe freakout
+subprocess.run("ipmitool raw 0x30 0x30 0x01 0x00", shell=True, stdout=subprocess.DEVNULL)
+subprocess.run("ipmitool raw 0x30 0xce 0x00 0x16 0x05 0x00 0x00 0x00 0x05 0x00 0x01 0x00 0x00", shell=True, stdout=subprocess.DEVNULL)
+
+# Enter fan control loop
 while True:
     avg_temp = get_cpu_temp()
     fan_speed = calculate_fan_speed(avg_temp)
@@ -50,6 +55,5 @@ while True:
         print(f"Average temperature: {format(avg_temp, '.0f')}°C, setting fans to {format(fan_speed, '.0f')}%")
         sys.stdout.flush()
 
-        command = f"ipmitool raw 0x30 0x30 0x02 0xff {hex(int(fan_speed*2.56))}"
-        subprocess.run(command, shell=True)
+        subprocess.run(f"ipmitool raw 0x30 0x30 0x02 0xff {hex(int(fan_speed*2.56))}", shell=True, stdout=subprocess.DEVNULL)
     time.sleep(sleep_time)
