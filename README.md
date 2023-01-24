@@ -9,7 +9,7 @@ This script uses the `psutil` and `os` library to monitor the CPU temperature an
 1. Clone or download the script to your system.
 2. Make sure that the `ipmitool` is installed and configured on your system.
 3. Install the `psutil` library by running `pip3 install psutil`
-4. Edit the script and update the variables `min_temp`, `max_temp`, `min_speed`, `max_speed` to match your desired values.
+4. Edit the script and update the variables to match your desired values.
 5. You can run the script by executing `python3 ipmi-fancontrol.py`
 ## Running as a systemd service
 You can run the script as a systemd service by following these steps:
