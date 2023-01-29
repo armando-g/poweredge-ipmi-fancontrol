@@ -10,7 +10,7 @@ This script has been confirmed to function optimally on 11th, 12th, and 13th gen
 * `ipmitool` installed on your system
 ## Installation
 1. Clone or download the script to your system.
-2. Make sure that the `ipmitool` is installed and functioning with the command `ipmitool raw 0x30 0x30 0x02 0xff <0x01-0x64>`
+2. Make sure that the `ipmitool` is installed and functioning. You can test this by putting your fans into manual control mode with the command `ipmitool raw 0x30 0x30 0x01 0x00`. Fans can be controlled using the command `ipmitool raw 0x30 0x30 0x02 0xff 0x<00-64>` to change fan speed. The speed is sent as a hexedecimal value instead of decimal, so 64 is 100 and 00 is 0.
 3. Install the `psutil` library by running `pip3 install psutil`
 4. Edit the script and update the variables to match your desired values.
 5. You can run the script by executing `python3 poweredge-ipmi-fancontrol.py`
