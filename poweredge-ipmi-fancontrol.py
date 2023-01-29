@@ -55,5 +55,5 @@ while True:
         print(f"Average temperature: {format(avg_temp, '.0f')}°C, setting fans to {format(fan_speed, '.0f')}%")
         sys.stdout.flush()
 
-        subprocess.run(f"ipmitool raw 0x30 0x30 0x02 0xff {hex(int(fan_speed*2.56))}", shell=True, stdout=subprocess.DEVNULL)
+        subprocess.run(f"ipmitool raw 0x30 0x30 0x02 0xff {hex(int(fan_speed))}", shell=True, stdout=subprocess.DEVNULL)
     time.sleep(sleep_time)
