@@ -1,13 +1,13 @@
 # PowerEdge IPMI Fan Control
 
-This script uses the `psutil` and `subprocess` libraries to continuously monitor the CPU temperature and adjust the fan speed through the IPMI interface.  The script executes a continuous loop that samples the average temperature across all CPU cores and calculates the corresponding fan speed via a linear equation, utilizing pre-configured minimum and maximum temperature and fan speed bounds. Additionally, the script incorporates a hysteresis mechanism, which sets a minimum temperature delta threshold before triggering an update in fan speed, thus mitigating excessive fan speed fluctuations.
+This script uses the `psutil` and `subprocess` libraries to continuously monitor the CPU temperature and adjust the fan speed through the IPMI interface. The script executes a continuous loop that samples the average temperature across all CPU cores and calculates the corresponding fan speed via a linear equation, utilizing pre-configured minimum and maximum temperature and fan speed bounds. Additionally, the script incorporates a hysteresis mechanism, which sets a minimum temperature delta threshold before triggering an update in fan speed, thus mitigating excessive fan speed fluctuations.
 
-This script has been successfully tested on the Dell R210ii, R720, and R7910.
+This script has been confirmed to function optimally on 11th, 12th, and 13th generation PowerEdge servers. Compatibility with 14th generation servers may vary based on iDRAC version. Please be aware that implementing this script will shift fan control to manual mode and deactivate third-party PCIe panic mode.
 
 ## Prerequisites
 * Python 3
 * `psutil` library
-* `ipmitool` installed on your system and functioning with the command `ipmitool raw 0x30 0x30 0x02 0xff <0x01-0x64>`
+* `ipmitool` installed on your system
 ## Installation
 1. Clone or download the script to your system.
 2. Make sure that the `ipmitool` is installed and functioning with the command `ipmitool raw 0x30 0x30 0x02 0xff <0x01-0x64>`
